@@ -107,13 +107,11 @@ int main(void)
 		snprintf(personPtr->name, 5, "abc%d", i);
 		commonListAdd(&personPtr->list, &personHead.list);
 	}
-	printf("list iterator 1st
-");
+	printf("list iterator 1st\n");
 	commonListIterate(pos, &personHead.list)
 	{
 		personPtr = commonListEntry(pos, PERSON, list);
-		printf("person age: %d, person name: %s
-", personPtr->age, personPtr->name);
+		printf("person age: %d, person name: %s\n", personPtr->age, personPtr->name);
 	}
 
 	/* 删除节点中年龄为12岁的人 */
@@ -127,13 +125,11 @@ int main(void)
 		}
 	}
 
-	printf("list iterator 2nd
-");
+	printf("list iterator 2nd\n");
 	commonListIterate(pos, &personHead.list)
 	{
 		personPtr = commonListEntry(pos, PERSON, list);
-		printf("person age%d, person name%s
-", personPtr->age, personPtr->name);
+		printf("person age%d, person name%s\n", personPtr->age, personPtr->name);
 	}
 
 	/* 销毁链表 */
@@ -144,10 +140,8 @@ int main(void)
 		free(personPtr);
 	}
 
-	printf("is empty:%d
-", commonListEmtpy(&personHead.list));
-	printf("list length:%d
-", commonListLength(&personHead.list));
+	printf("is empty:%d\n", commonListEmtpy(&personHead.list));
+	printf("list length:%d\n", commonListLength(&personHead.list));
 
     return 0;
 }

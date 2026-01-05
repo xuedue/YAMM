@@ -1,11 +1,28 @@
 #ifndef __TESTFRAME_H_
 #define __TESTFRAME_H_
 
-#define YAMM_MID_VAL_DEFINE(nIdle, nAlloc, nFree, allocated, free) {     .mcbIdleCount = nIdle,     .mcbAllocatedCount = nAlloc,     .mcbFreeCount = nFree,     .allocatedSize = allocated,     .freeSize = free }
+#define YAMM_MID_VAL_DEFINE(nIdle, nAlloc, nFree, allocated, free) \
+{ \
+    .mcbIdleCount = nIdle, \
+    .mcbAllocatedCount = nAlloc, \
+    .mcbFreeCount = nFree, \
+    .allocatedSize = allocated, \
+    .freeSize = free \
+}
 
-#define YAMM_CMD_SET_DEFINE(             function, inputArg, expectedRetValue, expectedMidValue) {     .func = function,     .input = inputArg,     .expectedRetVal  = expectedRetValue,     .expectedMidVal  = expectedMidValue  }
+#define YAMM_CMD_SET_DEFINE( \
+            function, inputArg, expectedRetValue, expectedMidValue) \
+{ \
+    .func = function, \
+    .input = inputArg, \
+    .expectedRetVal  = expectedRetValue, \
+    .expectedMidVal  = expectedMidValue \
+}
 
-#define YAMM_TEST_CASE_DEFINE(testCase) {     .cmdSets = testCase,     .cmdSetsNum = sizeof(testCase) / sizeof(YAMM_TEST_CMD_PARAMS) }
+#define YAMM_TEST_CASE_DEFINE(testCase) { \
+    .cmdSets = testCase, \
+    .cmdSetsNum = sizeof(testCase) / sizeof(YAMM_TEST_CMD_PARAMS) \
+}
 
 typedef int (*funcUnitTest)(void *data);
 

@@ -428,12 +428,9 @@ int yammDump(void)
         return YAMM_ERROR;
     }
 
-    DEBUG_INFO("	------------------------------------------
-");
-    DEBUG_INFO("	[Heap]
-");
-    DEBUG_INFO("	%-10s %-10s %-10s %-10s %-10s %-10s
-",
+    DEBUG_INFO("\t------------------------------------------\n");
+    DEBUG_INFO("\t[Heap]\n");
+    DEBUG_INFO("\t%-10s %-10s %-10s %-10s %-10s %-10s\n",
                 "ID", "Address", "Offset", "Size", "Type", "MCB Address");
 
     id = 0;
@@ -442,8 +439,7 @@ int yammDump(void)
         iterateMCB = commonListEntry(iteratePos, MEM_CTRL_BLK, list);
         addrOffset = iterateMCB->chunkPtr - gyammContext.memoryPoolAddress;
         /* 格式化输出 */
-        DEBUG_INFO("	%-10ld %-10p 0x%-8lx 0x%-8x %-10s %-10p
-", id, iterateMCB->chunkPtr, addrOffset,
+        DEBUG_INFO("\t%-10ld %-10p 0x%-8lx 0x%-8x %-10s %-10p\n", id, iterateMCB->chunkPtr, addrOffset,
                 iterateMCB->chunkSize, typeString[iterateMCB->type - '0'], iterateMCB);
         id++;
     }
@@ -453,18 +449,13 @@ int yammDump(void)
     mcbTotalCount = gyammStats.mcbIdleCount + gyammStats.mcbAllocatedCount + gyammStats.mcbFreeCount;
     heapTotalSize = gyammStats.allocatedSize + gyammStats.freeSize;
 
-    DEBUG_INFO("	Allocated:0x%lx, Free:0x%lx, Total:0x%lx
-",
+    DEBUG_INFO("\tAllocated:0x%lx, Free:0x%lx, Total:0x%lx\n",
                 gyammStats.allocatedSize, gyammStats.freeSize, heapTotalSize);
-    DEBUG_INFO("	------------------------------------------
-");
-    DEBUG_INFO("	[MCB Count]
-");
-    DEBUG_INFO("	Idle:%ld, Allocated:%ld, Free:%ld, Total:%ld
-", gyammStats.mcbIdleCount,
+    DEBUG_INFO("\t------------------------------------------\n");
+    DEBUG_INFO("\t[MCB Count]\n");
+    DEBUG_INFO("\tIdle:%ld, Allocated:%ld, Free:%ld, Total:%ld\n", gyammStats.mcbIdleCount,
                 gyammStats.mcbAllocatedCount, gyammStats.mcbFreeCount, mcbTotalCount);
-    DEBUG_INFO("	------------------------------------------
-");
+    DEBUG_INFO("\t------------------------------------------\n");
 
     return YAMM_OK;
 }
